@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{user.username}}</title>
+{% endblock %}4
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Profile</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    <div>
+        <a href="{% url 'bloglist' %}" target='_blank'>
+            <button>View All Blogs</button>
+        </a>
+    </div>
+{% endblock %}

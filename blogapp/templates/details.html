@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{post.title}}</title>
+{% endblock %}4
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/details.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>{{post.title}}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class='th'>Title</td>
+                    <td>{{post.title}}</td>
+                </tr>
+                <tr>
+                    <td class='th'>Author</td>
+                    <td>{{post.author}}</td>
+                </tr>
+                <tr>
+                    <td class='th'>Content</td>
+                    <td>{{post.description}}</td>
+                </tr>
+                <tr>
+                    <td class='th'>Created At</td>
+                    <td>{{post.created_at}}</td>
+                </tr>
+                <tr>
+                    <td class='th'>Updated At</td>
+                    <td>{{post.updated_at}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class='comment-section'>
+            <a href="{% url 'add_comment' post.id %}">
+                <button>Add Comment</button>
+            </a>
+            <a href="{% url 'bloglist'%}">
+                <button>Home</button>
+            </a>
+            <h2>Comments</h2>
+            <div class='comments'>
+                {% for comment in post.comments %}
+                    <div class='comment-box'>
+                        <div class='com-author'>{{comment.author}}</div>
+                        <div class='com-itself'>{{comment.content}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

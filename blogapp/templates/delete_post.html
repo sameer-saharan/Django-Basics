@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Delete: {{post.author}}</title>
+{% endblock %}4
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/delete_post.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Are you sure, You wants to Delete this Post?</h1>
+{% endblock %}
+
+{% block content %}
+    <div class='container'>
+        <h3>{{post.title}}</h3>
+        <div class='form-style'>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+            <a href="{% url 'bloglist' %}">
+                <button>Cancel</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

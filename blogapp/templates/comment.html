@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Add Comment</title>
+{% endblock %}4
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/comment.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Add Comment</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <a href="{% url 'details' post.id %}">
+                <button type="submit">Add</button>
+            </a>
+        </form>
+    </div>
+{% endblock %}
