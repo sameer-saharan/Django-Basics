@@ -1,0 +1,13 @@
+button {
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+input {
+    font-size: 16px;
+    padding: 5px;
+}
