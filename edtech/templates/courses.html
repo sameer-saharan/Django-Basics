@@ -1,0 +1,85 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Home - Edtech</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/courses.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Courses</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <nav>
+            {% if user.role == 'student'%}
+                <h4>{{user.username}}</h4>
+                <a href="{% url 'announcement' %}">
+                    <button>Announcement</button>
+                </a>
+                <a href="">
+                    <button>Enrolled Courses</button>
+                </a>
+                <a href="{% url 'logout' %}">
+                    <button>Logout</button>
+                </a>
+            {% elif user.role == 'instructor' or user.role == 'admin' %}
+                <h4>{{user.username}}</h4>
+                <a href="{% url 'course-create' %}">
+                    <button>Create new course</button>
+                </a>
+                <a href="{% url 'announcement' %}">
+                    <button>Post announcement</button>
+                </a>
+                <a href="{% url 'logout' %}">
+                    <button>Logout</button>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}">
+                    <button>Login</button>
+                </a>
+            {% endif %}
+        </nav>
+
+        <div class='all-courses'>
+            {% for course in courses %}
+                <div class='course-style'> 
+                    <h3>{{course.title}}</h3>
+                    <p><b>About:</b> {{course.description}}</p>
+                    <p><b>Instructor:</b> {{course.instructor}}</p>
+                    {% if user.role == 'instructor' or user.role == 'admin' %}
+                        <a href="{% url 'course-edit' course.id %}">
+                            <button>Edit Course</button>
+                        </a>
+                        <a href="">
+                            <button>Assignments</button>
+                        </a>
+                        {% if user.role == 'admin' %}
+                            <a href="{% url 'course-delete' course.id %}">
+                                <button>Delete</button>
+                            </a>
+                        {% endif %}
+                    {% elif user.role == 'student' %}
+                            {% if course.id in enrolled_courses %}
+                                <a href="{% url 'course-content' course.id %}" target='_blank'>
+                                    <button>View Content</button>
+                                </a>
+                                
+                            {% else %}
+                                <a href="{% url 'course-enroll' course.id %}">
+                                    <button>Enroll</button>
+                                </a>
+                            {% endif %}
+                            
+                    {% endif %}
+                    
+                </div>
+                
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

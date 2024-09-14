@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{course.title}}</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/content.css" %}">
+{% endblock %}
+
+{% block content %}
+    <nav>
+        <a href="{% url 'courses' %}">
+            <button>Home</button>
+        </a>
+    </nav>
+    <div class='course-style'>
+        <h1>{{course.title}}</h1>
+        <div class='course-cont'>{{course.content}}</div>
+    </div>
+    <div class='assignment'>
+        
+    </div>
+{% endblock %}
