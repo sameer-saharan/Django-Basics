@@ -1,0 +1,21 @@
+nav {
+    margin-bottom: 40px;
+}
+input {
+    font-size: 20px;
+    width: 400px
+}
+
+.announcements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.ancmt-style {
+    box-shadow: 1px 1px 10px black;
+    border-radius: 8px;
+    width: 300px;
+    padding: 0 10px
+}

@@ -1,0 +1,20 @@
+body {
+    margin-left: 20px;
+}
+
+nav {
+    margin-bottom: 60px;
+}
+
+.all-courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course-style {
+    box-shadow: 1px 1px 10px black;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+}
