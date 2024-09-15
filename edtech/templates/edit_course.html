@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Edit: {{course.title}}</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/create.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Edit: {{course.title}}</h1>
+{% endblock %}
+
+{% block content %}
+    <nav>
+        <a href="{% url 'courses' %}">
+            <button>Home</button>
+        </a>
+    </nav>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type='submit'>Save</button>
+        </form>
+    </div>
+{% endblock %}

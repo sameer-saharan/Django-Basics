@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title></title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/delete.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Are you sure ?</h1>
+{% endblock %}
+
+
+{% block content %}
+    <div class='container'>
+        <h3>{{course.title}}</h3>
+        <div class='form-style'>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+            <a href="{% url 'courses' %}">
+                <button>Cancel</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

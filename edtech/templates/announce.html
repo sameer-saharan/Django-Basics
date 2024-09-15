@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Announcement</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/announce.css" %}">
+{% endblock %}
+
+{% block content %}
+    <nav>
+        <a href="{% url 'courses' %}">
+            <button>Home</button>
+        </a>
+    </nav>
+
+    {% if user.role == 'admin' or user.role == 'instructor' %}
+    <h2>Create announcement</h2>
+        <div class='form'>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type='submit'>Send</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <h1>Announcements</h1>
+    <div class='announcements'>
+        {% for ancmt in announcements %}
+            <div class='ancmt-style'>
+                <h2>{{ancmt.title}}</h2>
+                <p>{{ancmt.content}}</p>
+                <p><b>{{ancmt.maker}}</b> - {{ancmt.time_stamp}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

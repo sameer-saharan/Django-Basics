@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Enrolled Courses</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Enrolled Courses</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="">
+            <button>Home</button>
+        </a>
+    </div>
+    {% if user.is_authenticated %}
+        <div>
+            
+        </div>
+    {% else %}
+        <h3>Your are not authorised, Please Login and try again</h3>
+        <a href="{% url 'login' %}">
+            <button>Login</button>
+        </a>
+    {% endif %}
+{% endblock %}

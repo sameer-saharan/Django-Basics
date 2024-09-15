@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Logged out</title>
+{% endblock %}4
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/logout.css" %}">
+{% endblock %}
+
+{% block h1 %}
+    <h1>Logged Out Successfully!</h1>
+{% endblock %}
+
+{% block content %}
+    <div class='container'>
+        <a href="{% url 'courses' %}">
+            <button>Home</button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button>Login</button>
+        </a>
+    </div>
+{% endblock %}
